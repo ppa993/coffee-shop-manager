@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading" routerLink="5">Tables</h1>
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col-md-6 col-lg-4" *ngFor="let table of tables">
+      <mat-card>
+        <mat-card-title routerLink="{{table.id}}">
+          <code>{{table.total | number}}</code>Table #{{table.id}}</mat-card-title>
+        <mat-card-subtitle>
+          Modern powerful framework
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button href="https://angular.io/docs/ts/latest/" target="_blank">
+            <i class="fa fa-book fa-lg"></i> Docs
+          </a>
+          <a mat-button href="https://github.com/angular/angular" target="_blank">
+            <i class="fa fa-github fa-lg"></i> Github
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

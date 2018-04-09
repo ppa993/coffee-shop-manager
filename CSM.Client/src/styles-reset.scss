@@ -1,0 +1,48 @@
+* {
+  a:hover,
+  a:active,
+  a:focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+label {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+code {
+  white-space: nowrap;
+  border-radius: 10px;
+  padding: 0 8px 1px 8px;
+}
+
+mat-card > mat-card-title > code {
+  font-size: 12px !important;
+}
+
+.mat-column-quantity{
+  max-width: 75px;
+}
+.mat-column-position{
+  max-width: 35px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 550px;
+  background-color: #e0e0e029 !important;
+} 
+
+.mat-header-cell{
+font-weight: bold !important;
+}

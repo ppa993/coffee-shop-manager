@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Move table</h1>
+<div mat-dialog-content>
+  <p>From table {{data.from}}</p>
+  <mat-form-field>
+    <mat-select placeholder="To table" [(ngModel)]="toTable">
+      <mat-option *ngFor="let table of tables" [value]="table">
+        {{ table }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="toTable" cdkFocusInitial>Ok</button>
+</div>
