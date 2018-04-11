@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 namespace CSM.Controllers
 {
 	[Route("api/[controller]")]
-    public class TablesController : Controller
+    public class InvoicesController : Controller
     {
-		protected ITableRepository repo;
-		public TablesController(ITableRepository repository)
+		protected IInvoiceRepository repo;
+		public InvoicesController(IInvoiceRepository repository)
 		{
 			repo = repository;
 		}
 
 		// GET api/tables
 		[HttpGet]
-		public async Task<IActionResult> GetTables()
+		public async Task<IActionResult> GetInvoices()
 		{
 			try
 			{
-				var result = await repo.GetTables();
+				var result = await repo.GetInvoices();
 
 				//request is ok
 				return Ok(result);
@@ -38,11 +38,11 @@ namespace CSM.Controllers
 
 		// GET api/tables/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetTableByID(int id)
+		public async Task<IActionResult> GetInvoiceByID(int id)
 		{
 			try
 			{
-				var result = await repo.GetTableByID(id);
+				var result = await repo.GetInvoiceByID(id);
 
 				//request is ok
 				return Ok(result);
@@ -58,31 +58,11 @@ namespace CSM.Controllers
 
         // POST api/values/5
         [HttpPost("{id}")]
-        public async Task<IActionResult> MoveTable(int id, [FromBody]int targetID)
+        public async Task<IActionResult> CreateNewInvoice(int id)
 		{
 			try
 			{
-				var result = await repo.MoveTable(id, targetID);
-
-				//request is ok
-				return Ok(result);
-			}
-			catch (Exception ex)
-			{
-				//TODO: log error
-
-				//internal server error
-				return StatusCode(StatusCodes.Status500InternalServerError, ex);
-			}
-		}
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-		public async Task<IActionResult> UpdateTableProducts(int id, [FromBody]BodyModel body)
-		{
-			try
-			{
-				var result = await repo.UpdateTableProducts(id, body.productID, (UpdateAction)body.action, body.targetID);
+				var result = await repo.CreateNewInvoice(id);
 
 				//request is ok
 				return Ok(result);

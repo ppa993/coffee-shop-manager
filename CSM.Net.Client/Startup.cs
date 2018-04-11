@@ -37,6 +37,7 @@ namespace CSM
 			services.AddMvc();
 
 			services.AddScoped<ITableRepository, TableRepository>();
+			services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

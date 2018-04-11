@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsComponent } from './settings';
+import { StatisticComponent } from './statistic';
 
 const routes: Routes = [
   {
@@ -14,6 +15,13 @@ const routes: Routes = [
     component: SettingsComponent,
     data: {
       title: 'Settings'
+    }
+  },
+  {
+    path: 'statistic',
+    component: StatisticComponent,
+    data: {
+      title: 'Statistic'
     }
   },
   {

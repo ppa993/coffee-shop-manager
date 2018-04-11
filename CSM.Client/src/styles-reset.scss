@@ -27,7 +27,7 @@ code {
 }
 
 mat-card > mat-card-title > code {
-  font-size: 12px !important;
+  font-size: 1rem !important;
 }
 
 .mat-column-quantity{
@@ -43,6 +43,10 @@ mat-card > mat-card-title > code {
   background-color: #e0e0e029 !important;
 } 
 
-.mat-header-cell{
-font-weight: bold !important;
+.mat-header-cell { 
+  font-weight: bold !important;
+}
+
+.mat-form-field {
+  display: block !important;
 }

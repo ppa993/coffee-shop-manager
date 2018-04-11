@@ -1,15 +1,16 @@
-<h1 mat-dialog-title>Move table</h1>
+<h1 mat-dialog-title>Move table?</h1>
 <div mat-dialog-content>
-  <p>From table {{data.from}}</p>
+  <p *ngIf="data.product">Move <code>{{data.product.product.name}} x {{data.product.quantity}}</code> from <code>table #{{data.from}}</code></p>
+  <p *ngIf="!data.product">Move <code>table #{{data.from}}</code></p>
   <mat-form-field>
     <mat-select placeholder="To table" [(ngModel)]="toTable">
-      <mat-option *ngFor="let table of tables" [value]="table">
-        {{ table }}
+      <mat-option *ngFor="let table of tables" [value]="table.id">
+        {{ table.id }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="toTable" cdkFocusInitial>Ok</button>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="toTable" cdkFocusInitial color="accent">Ok</button>
 </div>

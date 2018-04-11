@@ -11,7 +11,7 @@ import {
   ActionAuthLogin,
   ActionAuthLogout,
   selectorAuth,
-  routerTransition
+  //routerTransition
 } from '@app/core';
 import { environment as env } from '@env/environment';
 
@@ -21,7 +21,7 @@ import { NIGHT_MODE_THEME, selectorSettings } from './settings';
   selector: 'anms-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [routerTransition]
+  //animations: [routerTransition]
 })
 export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
   navigation = [
     { link: 'about', label: 'About' },
     { link: 'order', label: 'Order' },
+    { link: 'statistic', label: 'Statistic' },
     { link: 'features', label: 'Features' },
     { link: 'examples', label: 'Examples' }
   ];

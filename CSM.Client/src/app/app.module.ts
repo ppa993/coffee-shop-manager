@@ -11,7 +11,8 @@ import { StaticModule } from './static';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { TableService } from './services/table.service'
+import { TableService, InvoiceService } from './services';
+import { StatisticComponent } from './statistic/statistic/statistic.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,8 @@ import { TableService } from './services/table.service'
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent],
-  providers: [TableService],
+  declarations: [AppComponent, StatisticComponent],
+  providers: [TableService, InvoiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { MoveTableDialogComponent } from './dialogs/move-table-dialog/move-table-dialog.component';
+import { PaymentDialogComponent } from './dialogs/payment-dialog/payment-dialog.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,7 @@ import { MoveTableDialogComponent } from './dialogs/move-table-dialog/move-table
     MatPaginatorModule,
     MatDialogModule
   ],
-  declarations: [BigInputComponent, BigInputActionComponent, MoveTableDialogComponent],
+  declarations: [BigInputComponent, BigInputActionComponent, MoveTableDialogComponent, PaymentDialogComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -79,6 +80,6 @@ import { MoveTableDialogComponent } from './dialogs/move-table-dialog/move-table
     BigInputComponent,
     BigInputActionComponent
   ],
-  entryComponents: [MoveTableDialogComponent]
+  entryComponents: [MoveTableDialogComponent, PaymentDialogComponent]
 })
 export class SharedModule {}

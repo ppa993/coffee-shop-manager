@@ -12,14 +12,16 @@ namespace CSM.DataModel
 		{
 
 		}
-		public Table(int id, IEnumerable<ProductCollection> products)
+		public Table(int id)
 		{
 			this.ID = id;
-			this.Products = products;
 		}
 
 		public void GetTotal()
 		{
+			if (this.Products == null)
+				return;
+
 			long temp = 0;
 			foreach(var product in this.Products)
 			{

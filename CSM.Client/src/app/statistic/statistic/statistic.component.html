@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="main-heading">Tables</h1>
+      </div>
+    </div>
+    <div class="row align-items-start">
+        <div class="col-md-6 col-lg-4" >
+          <mat-card>
+            <mat-card-title>
+              Table #{{table.id}}
+            </mat-card-title>
+            <mat-card-content>
+              sdfsdfsdfsdf
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-6 col-lg-8" >
+            <mat-card>
+                <mat-card-content>
+                    <div *ngIf="chart">
+                        <canvas id="canvas">{{ chart }}</canvas>
+                      </div>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+  </div>

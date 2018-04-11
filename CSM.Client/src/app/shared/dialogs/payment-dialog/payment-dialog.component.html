@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Pay?</h1>
+<div mat-dialog-content *ngIf="table">
+  <p><strong>Table #{{table.id}}</strong> total: <code>{{table.total | number}}</code></p> 
+  <br>
+  <mat-chip-list>
+    <mat-chip *ngFor="let product of table.products">
+      {{product.product.name}} x {{product.quantity}}
+    </mat-chip>
+  </mat-chip-list>
+  <br>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="accent">Ok</button>
+</div>

@@ -10,8 +10,8 @@
         <mat-card-title>
           <code *ngIf="table">{{table.total | number}}</code>Table #{{id}}
         </mat-card-title>
-        <mat-card-subtitle>
-            <button mat-raised-button color="accent"><mat-icon>done</mat-icon> Pay</button>
+        <mat-card-subtitle *ngIf="table && table.total > 0">
+            <button mat-raised-button color="accent" (click)="createNewInvoice()"><mat-icon>monetization_on</mat-icon> Pay</button>
             &nbsp;
             <button mat-raised-button color="warn" (click)="moveTable()"><mat-icon>send</mat-icon> Move</button>
         </mat-card-subtitle>
@@ -31,15 +31,15 @@
             <ng-container matColumnDef="action">
               <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
               <mat-cell *matCellDef="let element"> 
-                <button mat-icon-button><mat-icon (click)="add(element)">add circle</mat-icon></button><button mat-icon-button><mat-icon (click)="remove(element)">remove circle</mat-icon></button>
-                <button mat-icon-button><mat-icon>delete_forever</mat-icon></button><button mat-icon-button><mat-icon>send</mat-icon></button>
+                <button mat-icon-button><mat-icon (click)="updateTableProduct(element.product.id, 1, 0)">add</mat-icon></button><button mat-icon-button><mat-icon (click)="updateTableProduct(element.product.id, 2, 0)">remove</mat-icon></button>
+                <button mat-icon-button><mat-icon (click)="moveProduct(element)">send</mat-icon></button>
               </mat-cell>
             </ng-container>
         
             <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
           </mat-table>
-          <mat-paginator #paginator1
+          <mat-paginator #paginator
                  [pageSize]="10"
                  [showFirstLastButtons]="true">
           </mat-paginator>
@@ -48,7 +48,7 @@
     </div>
     <div #manage class="col-md-6 col-lg-5">
       <mat-card>
-        <mat-card-title>Lazy loading</mat-card-title>
+        <mat-card-title>Products</mat-card-title>
         <mat-card-content>
             <mat-form-field>
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -68,7 +68,7 @@
                 <ng-container matColumnDef="action">
                   <mat-header-cell *matHeaderCellDef></mat-header-cell>
                   <mat-cell *matCellDef="let element"> 
-                    <button mat-icon-button><mat-icon (click)="add(element)">add circle</mat-icon></button>
+                    <button mat-icon-button><mat-icon (click)="updateTableProduct(element.id, 1, 0)">add</mat-icon></button>
                   </mat-cell>
                 </ng-container>
 
