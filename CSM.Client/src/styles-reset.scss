@@ -50,3 +50,12 @@ mat-card > mat-card-title > code {
 .mat-form-field {
   display: block !important;
 }
+
+.radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.radio-button {
+  margin: 5px;
+}

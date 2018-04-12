@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -21,16 +21,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { MoveTableDialogComponent } from './dialogs/move-table-dialog/move-table-dialog.component';
 import { PaymentDialogComponent } from './dialogs/payment-dialog/payment-dialog.component';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
 
     MatButtonModule,
@@ -50,12 +53,16 @@ import { PaymentDialogComponent } from './dialogs/payment-dialog/payment-dialog.
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent, MoveTableDialogComponent, PaymentDialogComponent],
   exports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
 
     MatButtonModule,
@@ -76,6 +83,9 @@ import { PaymentDialogComponent } from './dialogs/payment-dialog/payment-dialog.
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     BigInputComponent,
     BigInputActionComponent

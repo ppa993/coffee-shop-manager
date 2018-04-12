@@ -78,7 +78,7 @@ namespace CSM.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-		public async Task<IActionResult> UpdateTableProducts(int id, [FromBody]BodyModel body)
+		public async Task<IActionResult> UpdateTableProducts(int id, [FromBody]MoveTableModel body)
 		{
 			try
 			{

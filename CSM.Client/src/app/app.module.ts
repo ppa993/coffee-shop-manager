@@ -11,8 +11,10 @@ import { StaticModule } from './static';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { TableService, InvoiceService } from './services';
-import { StatisticComponent } from './statistic/statistic/statistic.component';
+import { TableService, InvoiceService, IncomeService, ProductService } from './services';
+import { StatisticComponent } from '@app/statistic/';
+import { MAT_DATE_LOCALE } from '@angular/material';
+import { ManageProductComponent } from '@app/product';
 
 @NgModule({
   imports: [
@@ -31,8 +33,8 @@ import { StatisticComponent } from './statistic/statistic/statistic.component';
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent, StatisticComponent],
-  providers: [TableService, InvoiceService],
+  declarations: [AppComponent, StatisticComponent, ManageProductComponent],
+  providers: [TableService, InvoiceService, IncomeService, ProductService, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

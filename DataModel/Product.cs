@@ -7,6 +7,9 @@
         public long Price { get; set; }
 		public bool IsDeleted { get; set; }
 
+		public Product()
+		{
+		}
 		public Product(int id, string name, long price)
 		{
 			this.ID = id;

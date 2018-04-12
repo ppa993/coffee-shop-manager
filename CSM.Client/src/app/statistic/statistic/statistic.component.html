@@ -1,28 +1,59 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="main-heading">Tables</h1>
-      </div>
-    </div>
-    <div class="row align-items-start">
-        <div class="col-md-6 col-lg-4" >
-          <mat-card>
-            <mat-card-title>
-              Table #{{table.id}}
-            </mat-card-title>
-            <mat-card-content>
-              sdfsdfsdfsdf
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-6 col-lg-8" >
-            <mat-card>
-                <mat-card-content>
-                    <div *ngIf="chart">
-                        <canvas id="canvas">{{ chart }}</canvas>
-                      </div>
-                </mat-card-content>
-              </mat-card>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">Statistic</h1>
     </div>
   </div>
+  <div class="row align-items-start">
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>
+          View by
+        </mat-card-title>
+        <mat-card-content>
+          <mat-radio-group class="radio-group" [(ngModel)]="selectedType">
+            <mat-radio-button class="radio-button" *ngFor="let type of types" [value]="type.value">
+              {{type.viewValue}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <br><br>
+          <div *ngIf="selectedType == 1">
+            <mat-form-field>
+              <input matInput [matDatepicker]="datePicker" placeholder="Select date" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+              <mat-datepicker #datePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div *ngIf="selectedType == 2">
+            <mat-form-field>
+                <mat-select placeholder="Select month" [(ngModel)]="month">
+                  <mat-option *ngFor="let month of months" [value]="month.value">
+                    {{ month.viewValue }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="selectedType == 3">
+            <mat-form-field>
+                <input matInput placeholder="Input year" maxlength="4" [(ngModel)]="year">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="center">
+          <a mat-raised-button color="accent" (click)="getStatistic()">
+            <i class="material-icons">timeline</i>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-8">
+      <mat-card>
+        <mat-card-content>
+          <div *ngIf="chart">
+            <canvas id="canvas">{{ chart }}</canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,6 @@ namespace CSM.Repositories
 	{
 		Task<IEnumerable<Table>> GetTables();
 		Task<Table> GetTableByID(int id);
-		Task<IEnumerable<Product>> GetProducts();
 		Task<bool> UpdateTableProducts(int tableID, int productID, UpdateAction action, int targetID);
 		Task<bool> MoveTable(int tableID, int targetID);
 	}

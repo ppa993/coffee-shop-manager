@@ -31,11 +31,6 @@ namespace CSM.Repositories
 			return await dataAccess.GetTableByID(id);
 		}
 
-		public async Task<IEnumerable<Product>> GetProducts()
-		{
-			return await dataAccess.GetProducts();
-		}
-
 		public async Task<bool> UpdateTableProducts(int tableID, int productID, UpdateAction action, int targetID)
 		{
 			return await dataAccess.UpdateTableProduct(tableID, productID, action, targetID);

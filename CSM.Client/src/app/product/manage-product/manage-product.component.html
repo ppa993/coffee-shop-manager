@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">Products</h1>
+    </div>
+  </div>
+  <div class="row align-items-start">
+    <div class="col-md-6 col-lg-6">
+      <mat-card>
+        <mat-card-title>
+          Product list
+        </mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+          <mat-table [dataSource]="productSource">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="price">
+              <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.price | number}} </mat-cell>
+            </ng-container>
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="openUpdate(element)">
+                  <mat-icon >edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="removeProduct(element.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="productColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: productColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-6">
+      <mat-card>
+          <mat-card-title *ngIf="editing">
+              Edit product
+          </mat-card-title>
+          <mat-card-title *ngIf="!editing">
+              Add new product
+          </mat-card-title>
+        <mat-card-content>
+            <div *ngIf="editing">
+                <mat-form-field>
+                    <input matInput placeholder="ID" disabled value="{{editingProduct.id}}">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Name" [(ngModel)]="editingProduct.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Price" [(ngModel)]="editingProduct.price">
+                </mat-form-field>
+            </div>
+            <div *ngIf="adding">
+                <mat-form-field>
+                    <input matInput placeholder="Name" [(ngModel)]="editingProduct.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Price" [(ngModel)]="editingProduct.price">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions *ngIf="editing">
+            <button mat-raised-button color="accent" (click)="updateProduct()"><mat-icon>edit</mat-icon> Edit </button>
+            &nbsp;
+            <button mat-raised-button (click)="cancel()"> Cancel</button>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="adding">
+            <button mat-raised-button color="accent" (click)="addNewProduct()"><mat-icon>add_circle</mat-icon> Add new </button>
+            &nbsp;
+            <button mat-raised-button (click)="cancel()"> Cancel</button>
+        </mat-card-actions>
+        <mat-card-actions class="add-new-product" *ngIf="addNew">
+            <button mat-raised-button color="primary" (click)="openAdd()"><mat-icon>add_circle</mat-icon> Add new</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

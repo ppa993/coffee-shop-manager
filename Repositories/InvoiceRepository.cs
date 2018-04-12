@@ -36,5 +36,10 @@ namespace CSM.Repositories
 		{
 			return dataAccess.CreateNewInvoice(tableID);
 		}
+
+		public Task<IEnumerable<Income>> GetIncomeByType(StatisticType type, DateTime time)
+		{
+			return dataAccess.GetIncomeByType(type, time);
+		}
 	}
 }

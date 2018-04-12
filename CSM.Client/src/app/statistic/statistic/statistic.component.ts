@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { Invoice } from '@app/models';
-import { InvoiceService } from '@app/services';
+import { Income } from '@app/models';
+import { IncomeService } from '@app/services';
+import { FormControl } from '@angular/forms';
+import { create } from 'domain';
 
 @Component({
   selector: 'anms-statistic',
@@ -11,53 +13,83 @@ import { InvoiceService } from '@app/services';
 export class StatisticComponent implements OnInit {
 
   chart = [];
-  result: Invoice[];
+  result: Income[];
+  selectedType: number;
+  today = new Date();
+  date = new FormControl(this.today);
+  month = this.today.getMonth()+1;
+  year = this.today.getFullYear();
+
+  types = [
+    { value: 1, viewValue: 'Day' },
+    { value: 2, viewValue: 'Month' },
+    { value: 3, viewValue: 'Year' }
+  ];
+
+  months = [
+    { value: 1, viewValue: 'January' },
+    { value: 2, viewValue: 'February' },
+    { value: 3, viewValue: 'March' },
+    { value: 4, viewValue: 'April' },
+    { value: 5, viewValue: 'May' },
+    { value: 6, viewValue: 'June' },
+    { value: 7, viewValue: 'July' },
+    { value: 8, viewValue: 'August' },
+    { value: 9, viewValue: 'September' },
+    { value: 10, viewValue: 'October' },
+    { value: 11, viewValue: 'November' },
+    { value: 12, viewValue: 'December' },
+  ];
 
   constructor(
-    private invoiceService: InvoiceService
+    private incomeService: IncomeService
   ) { }
 
-  ngOnInit() {
-    this.invoiceService.getInvoices()
-      .subscribe(res => {
+  ngOnInit() {}
 
-        let total = res.map(res => res.total)
-        let alldates = res.map(res => res.createdDate)
+  getStatistic(){
+    let time = new Date();
+    if (this.selectedType == 1) time = this.date.value 
+    if (this.selectedType == 2) time = new Date(this.today.getFullYear(), this.month) 
+    if (this.selectedType == 3) time = new Date(this.year, 1);
 
-        let weatherDates = []
-        alldates.forEach((res) => {
-          let jsdate = new Date(res)
-          weatherDates.push(jsdate.toLocaleTimeString(['en'], { year: 'numeric', month: 'short', day: 'numeric'}))
-        })
+    
+    this.incomeService.getIncomeByType(this.selectedType, time)
+    .subscribe(res => this.createChart(res));
+  }
 
-        this.chart = new Chart('canvas', {
-          type: 'bar',
-          data: {
-            labels: weatherDates,
-            datasets: [
-              {
-                data: total,
-                backgroundColor: '#ff6384',
-                borderColor: '#3cba9f',
-                fill: false
-              },
-            ]
+
+  createChart(res: any) {
+    let total = res.map(res => res.total);
+    let labels = res.map(res => res.label);
+
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            data: total,
+            backgroundColor: '#ff6384',
+            borderColor: '#3cba9f',
+            fill: false
           },
-          options: {
-            legend: {
-              display: false
-            },
-            scales: {
-              xAxes: [{
-                display: true
-              }],
-              yAxes: [{
-                display: true
-              }]
-            }
-          }
-        })
-      })
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }]
+        }
+      }
+    })
   }
 
 }
