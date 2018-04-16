@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
 
 import { Product } from '@app/models';
+import { environment as env } from '@env/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class ProductService {
 
-  private productUrl = 'http://localhost:56720/api/products';
+  private productUrl = env.apiUrl + 'products';
 
   constructor(private http: HttpClient) { }
 

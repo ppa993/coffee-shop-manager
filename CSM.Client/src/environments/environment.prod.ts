@@ -4,6 +4,7 @@ export const environment = {
   appName: 'Coffee shop Manager',
   envName: 'PROD',
   production: true,
+  apiUrl: 'http://csmrestapi.azurewebsites.net/api/',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

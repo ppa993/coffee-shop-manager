@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { environment as env } from '@env/environment';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { MoveTableDialogComponent, PaymentDialogComponent } from '@app/shared'
 import { Product, ProductCollection, Table } from '@app/models';
-import { TableService, InvoiceService } from '@app/services';
+import { TableService, InvoiceService, ProductService } from '@app/services';
 
 @Component({
   selector: 'anms-manage-table',
@@ -25,6 +24,7 @@ export class ManageTableComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private tableService: TableService,
+    private productService: ProductService,
     private invoiceService: InvoiceService,
     public dialog: MatDialog
   ) {}
@@ -50,7 +50,7 @@ export class ManageTableComponent implements OnInit {
   }
 
   getProducts(){
-    this.tableService.getProducts()
+    this.productService.getProducts()
     .subscribe(products => {
       this.products = products;
       this.productSource.data = products;

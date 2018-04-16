@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Income } from '@app/models';
+import { environment as env } from '@env/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class IncomeService {
 
-  private incomeUrl = 'http://localhost:56720/api/income';
+  private incomeUrl = env.apiUrl + 'income';
 
   constructor(
     private http: HttpClient

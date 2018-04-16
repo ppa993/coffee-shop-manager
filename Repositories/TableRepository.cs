@@ -8,12 +8,11 @@ namespace CSM.Repositories
 {
 	public class TableRepository : ITableRepository
 	{
-        protected readonly string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\apham24\Documents\GitHub\coffee-shop-manager\DataAccess\Database.mdf;Integrated Security=True;Connect Timeout=30";
-		DataAccessManager dataAccess;
+        DataAccessManager dataAccess;
 
         public TableRepository()
         {
-			dataAccess = new DataAccessManager(ConnectionString);
+			dataAccess = new DataAccessManager();
 		}
 
         public void Dispose()

@@ -13,7 +13,10 @@ namespace CSM.DataAccess
 
 		#region Constructor
 
-		public DataAccessManager(string conn) => connectionString = conn;
+		public DataAccessManager()
+		{
+			connectionString = @"Server=tcp:csmrestapi.database.windows.net,1433;Initial Catalog=CsmRestAPIDb;Persist Security Info=False;User ID=anst;Password=ilBA85!@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+		}
 		#endregion
 
 		#region TABLE
